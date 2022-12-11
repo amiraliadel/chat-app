@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-
+import users from './routes/users.js';
 // destructure environment variables.
 const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
 
@@ -32,6 +32,9 @@ app.use(cors({
     origin: true,
     credentials: true
 }));
+
+// routes.
+app.use('/users', users);
 
 // listen to the port.
 app.listen(PORT, () => {
