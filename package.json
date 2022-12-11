@@ -4,8 +4,11 @@
   "description": "A simple online platform to send and receive messages in real time using Socket.io technology.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server",
+    "dev": "npx nodemon server"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amiraliadel/chat-app.git"
