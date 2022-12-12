@@ -1,9 +1,9 @@
-import React from "react";
-import styles from './Home.module.css';
+import React, {useState} from "react";
+import {PublicHome, PrivateHome} from './index';
 
 export default function Home () {
-
+    const [loggedIn, setLoggedIn] = useState(false);
     return (<>
-        Home
+        {loggedIn ? <PrivateHome />: <PublicHome />}
     </>);
 }
