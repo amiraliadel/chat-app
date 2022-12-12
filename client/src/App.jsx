@@ -1,5 +1,6 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
+import Layout from './components/Layout/Layout';
 import Home from './routes/HomePage/Home';
 import Auth from './routes/AuthPage/Auth';
 import Login from './routes/LoginPage/Login';
@@ -11,11 +12,13 @@ import './App.css';
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>}/>
-      <Route path='/auth' element={<Auth/>}/>
-      <Route path='/*' element={<NoMatch/>}/>
+      <Route element={<Layout />}>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/auth' element={<Auth/>}/>
+        <Route path='/*' element={<NoMatch/>}/>
+      </Route>
     </Routes>
   );
 }
