@@ -16,11 +16,11 @@ export default function Header () {
                 </Link>
             </div>
             <div className={styles.Icons}>
-                <Link>
+                <Link to='/auth/login'>
                     <LoginIcon />
                     
                 </Link>
-                <Link>
+                <Link to='/users/register'>
                     <RegisterIcon />
                 </Link>
             </div>
