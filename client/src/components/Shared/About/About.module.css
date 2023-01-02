@@ -1,5 +1,80 @@
 .About {
     width: 100%;
     min-height: calc(100vh - 6rem);
-    background-color: blueviolet;
+    background-color: aliceblue;
+}
+.Container {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: grid;
+    align-content: space-around;
+}
+.Text h2 {
+    font-family: 'Zen Dots', cursive;
+    font-size: 1.8rem;
+    color: #212121;
+    padding-top: 2rem;
+    padding-bottom: 5px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #212121;
+}
+.Text p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: #212121;    
+}
+.Links {
+    display: grid;
+    grid-auto-flow: column;
+    align-content: center;
+    justify-content: space-evenly;
+}
+.Links a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.6rem;
+    color: #212121;
+    padding: 1rem 2rem;
+    background-color: steelblue;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 1px #212121;
+    cursor: pointer;
+}
+.Links a:hover {
+    box-shadow: 0 0 5px 1px #212121;
+}
+
+.Img {
+    width: 100%;
+}
+.Img img {
+    width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+    .About {
+        display: grid;
+        align-content: center;
+        justify-content: center;
+    }
+    .Container {
+        max-width: 72rem;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 4fr 1fr;
+        grid-auto-flow: row;
+        border-radius: 4px;
+        box-shadow: 0 0 2px 1px #212121;
+        background-color: aliceblue;
+    }
+    .Img {
+        grid-column: 2/3;
+        grid-row: 1/3;
+    }
+    .Text p {
+        padding: 1rem;
+        line-height: 1.8rem;   
+    }
 }
