@@ -17,8 +17,8 @@ export default function About () {
                 </div>
                 <div className={styles.Links}>
                     <Link to="./auth/login">login</Link>
-                    <Link to="./users/register">register</Link>
-                    <Link to="./users/guest">guest</Link>
+                    <Link to="./auth/register">register</Link>
+                    <Link to="./guest">guest</Link>
                 </div>
             </div>
         </div>
