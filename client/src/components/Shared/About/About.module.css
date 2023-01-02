@@ -1,0 +1,5 @@
+.About {
+    width: 100%;
+    min-height: calc(100vh - 6rem);
+    background-color: blueviolet;
+}
