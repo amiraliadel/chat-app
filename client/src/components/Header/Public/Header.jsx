@@ -20,7 +20,7 @@ export default function Header () {
                     <LoginIcon />
                     
                 </Link>
-                <Link to='/users/register'>
+                <Link to='/auth/register'>
                     <RegisterIcon />
                 </Link>
             </div>
