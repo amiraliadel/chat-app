@@ -1,11 +1,10 @@
-import React from "react";
-import {Outlet} from "react-router-dom";
-import styles from './Auth.module.css';
+import React, {useContext} from "react";
+import {AuthContext} from "../../contexts/AuthContext";
+import {PublicAuth, PrivateAuth} from './index';
 
 export default function Auth () {
-
+    const {loggedIn} = useContext(AuthContext);
     return (<>
-        Auth
-        <Outlet/>
+        {loggedIn ? <PrivateAuth/>: <PublicAuth/>}
     </>);
 }
