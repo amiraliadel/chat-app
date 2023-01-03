@@ -5,6 +5,9 @@ import styles from './Auth.module.css';
 export default function Auth () {
     
     return (<>
-        public auth
+    <div></div>
+        <div className={styles.Auth}>
+            <Outlet />
+        </div>
     </>);
 }
