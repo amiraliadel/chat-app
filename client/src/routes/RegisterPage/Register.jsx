@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
-import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
+import axios from 'axios';
+import Log from "../../components/Shared/Log/Log";
 import styles from './Register.module.css';
 
 export default function Register () {
@@ -87,13 +88,13 @@ export default function Register () {
                 </div>
                 {(() => {
                     if (errors) {
-                        //return (errors.map(err => <Log msg={err.msg} key={err.msg}/>));
+                        return (errors.map(err => <Log msg={err.msg} key={err.msg}/>));
                     }
                     if (result.success) {
                         setTimeout(() => {
                             navigate('/auth/login', {replace: true});
                         }, 2000);
-                        //return (<Log msg={result.msg} key={result.msg}/>);
+                        return (<Log msg={result.msg} key={result.msg}/>);
                     }
                 })()}
             </form>
