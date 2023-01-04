@@ -1,12 +1,11 @@
 import express from 'express';
-
+import {registerValidation, loginValidation, searchValidation} from '../helpers/validation.js';
+import register from '../controllers/users/register.js';
 
 const router = express.Router();
 
 // register route.
-router.post('/register', (req, res) => {
-    res.send('register route');
-});
+router.post('/register', registerValidation, register);
 
 // login route.
 router.post('/login', (req, res) => {
