@@ -4,7 +4,6 @@ import {AuthProvider} from './contexts/AuthContext';
 import Layout from './components/Layout/Layout';
 import Home from './routes/HomePage/Home';
 import Auth from './routes/AuthPage/Auth';
-import Users from './routes/UsersPage/Users';
 import Login from './routes/LoginPage/Login';
 import Register from './routes/RegisterPage/Register';
 import Guest from './routes/GuestPage/Guest';
@@ -21,8 +20,6 @@ function App() {
           <Route path='/auth' element={<Auth/>}>
             <Route path='login' element={<Login/>}/>
             <Route path='register' element={<Register/>}/>
-          </Route>
-          <Route path='/users' element={<Users/>}>
           </Route>
           <Route path='/guest' element={<Guest/>}/>
           <Route path='/*' element={<NoMatch/>}/>
