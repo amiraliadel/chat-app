@@ -1,0 +1,13 @@
+.Log {
+    width: auto;
+    height: auto;
+    display: grid;
+    padding: 0px 20px;
+    background-color: #212121;
+}
+.Log p {
+    color: aliceblue;
+    font-size: 12px;
+    line-height: 12px;
+    align-self: center;
+}
