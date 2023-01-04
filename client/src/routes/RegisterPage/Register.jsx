@@ -27,7 +27,7 @@ export default function Register () {
             password: formData.get('password')
         };
         try {
-            const res = await axios.post('/users/register', data);
+            const res = await axios.post('http://localhost:3003/users/register', data);
             if (res.data.success) {
                 setResult({msg: 'you are registered and you will be redirected to log in page soon.', success: true});
             }
