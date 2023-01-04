@@ -32,6 +32,7 @@ export default function Register () {
                 setResult({msg: 'you are registered and you will be redirected to log in page soon.', success: true});
             }
         } catch (err) {
+            console.log(err)
             setErrors(err.response.data.server_message);
         }
     }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import styles from './Log.module.css';
 
-export default function (props) {
+export default function Log (props) {
     const [msg, setMsg] = useState();
 
     useEffect(() => {
