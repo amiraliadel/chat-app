@@ -1,6 +1,7 @@
 import express from 'express';
 import {registerValidation, loginValidation, searchValidation} from '../helpers/validation.js';
 import register from '../controllers/users/register.js';
+import login from '../controllers/users/login.js';
 
 const router = express.Router();
 
@@ -8,9 +9,7 @@ const router = express.Router();
 router.post('/register', registerValidation, register);
 
 // login route.
-router.post('/login', (req, res) => {
-    res.send('login route');
-});
+router.post('/login', loginValidation, login);
 
 // logout route.
 router.get('/logout', (req, res) => {
