@@ -1,0 +1,71 @@
+.Sidebar {
+    width: 100%;
+    height: 20rem;
+    padding: 1rem;
+    grid-column: 1/3;
+    display: grid;
+    grid-auto-flow: row;
+    align-content: space-between;
+    row-gap: 1rem;
+    color: aliceblue;
+    background-color: #212121;
+}
+.Sidebar form {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: grid;
+    grid-auto-flow: row;
+    align-content: flex-start;
+    row-gap: 2rem;
+}
+.Sidebar form label {
+    font-size: 1.6rem;
+}
+.Sidebar form label span {
+    color: aliceblue;
+    text-transform: lowercase;
+}
+.Sidebar form label input {
+    width: 100%;
+    height: 4rem;
+    padding-left: 1rem;
+    text-transform: capitalize;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 1px aliceblue;
+}
+.Sidebar form button {
+    width: 50%;
+    height: 4rem;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 2px 1px aliceblue;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    justify-self: center;
+    background-color: steelblue;
+}
+.Content {
+    padding: 1rem;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .Sidebar {
+        width: 36rem;
+        height: 100%;
+        padding: 2rem;
+        grid-column: 1/2;
+        align-content: flex-start;
+        color: aliceblue;
+        background-color: #212121;
+    }
+    .Sidebar form {
+        align-content: flex-start;
+        row-gap: 3rem;
+    }
+    .Content {
+        padding: 2rem;
+    }
+}
