@@ -45,6 +45,10 @@ app.use(cors({
 // routes.
 app.use('/users', users);
 
+// socket
+socket.of('/guest').on('connection', (socket) => {
+    console.log(socket.id);
+});
 // listen to the port.
 server.listen(PORT, () => {
     console.log(`Server is listening at port ${PORT}.`);
