@@ -25,7 +25,7 @@ export default function Login () {
             if (res.data.success) {
                 setErrors('');
                 handleLogin(true, res.data.username);
-                // navigate('/');
+                navigate('/');
             }
         } catch (err) {
             setErrors(err.response.data.server_message);
