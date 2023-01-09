@@ -2,7 +2,7 @@ import express from 'express';
 import {registerValidation, loginValidation, searchValidation} from '../helpers/validation.js';
 import register from '../controllers/users/register.js';
 import login from '../controllers/users/login.js';
-
+import logout from '../controllers/users/logout.js';
 const router = express.Router();
 
 // register route.
@@ -17,9 +17,7 @@ router.get('/logout', (req, res) => {
 });
 
 // user data route.
-router.get('/userData', (req, res) => {
-    res.send('user data route');
-});
+router.get('/userData', logout);
 
 // search route.
 router.post('/search', (req, res) => {
