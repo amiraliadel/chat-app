@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import {Server} from 'socket.io';
+import {createServer} from 'http';
 import users from './routes/users.js';
 // destructure environment variables.
 const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
@@ -21,6 +23,13 @@ mongoose
 
 // initialize server.
 const app = express();
+const server = createServer(app);
+const socket = new Server(server, {
+    cors: {
+        origin: true,
+        credentials: true
+    }
+});
 
 // middlewares.
 app.use(bodyParser.urlencoded({
@@ -37,6 +46,6 @@ app.use(cors({
 app.use('/users', users);
 
 // listen to the port.
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is listening at port ${PORT}.`);
 });
