@@ -1,5 +1,6 @@
 import express from 'express';
 import {registerValidation, loginValidation, searchValidation} from '../helpers/validation.js';
+import decodeJwtToken from '../middlewares/decodeJwtToken.js';
 import register from '../controllers/users/register.js';
 import login from '../controllers/users/login.js';
 import logout from '../controllers/users/logout.js';
@@ -16,7 +17,7 @@ router.post('/login', loginValidation, login);
 router.get('/logout', logout);
 
 // user data route.
-router.get('/userData', userData);
+router.get('/userData', decodeJwtToken, userData);
 
 // search route.
 router.post('/search', (req, res) => {
