@@ -3,6 +3,7 @@ import {registerValidation, loginValidation, searchValidation} from '../helpers/
 import register from '../controllers/users/register.js';
 import login from '../controllers/users/login.js';
 import logout from '../controllers/users/logout.js';
+import userData from '../controllers/users/userData.js';
 const router = express.Router();
 
 // register route.
@@ -15,9 +16,7 @@ router.post('/login', loginValidation, login);
 router.get('/logout', logout);
 
 // user data route.
-router.get('/userData', (req, res) => {
-    res.send('user data route');
-});
+router.get('/userData', userData);
 
 // search route.
 router.post('/search', (req, res) => {
