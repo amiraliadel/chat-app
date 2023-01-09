@@ -1,9 +1,11 @@
-import React from "react";
-import styles from './Guest.module.css';
+import React, {useContext} from "react";
+import {AuthContext} from "../../contexts/AuthContext";
+import {PublicGuest, PrivateGuest} from './index';
 
 export default function Guest () {
+    const {loggedIn} = useContext(AuthContext);
 
     return (<>
-        Guest
+        {loggedIn ? <PrivateGuest />: <PublicGuest />}
     </>);
 }
