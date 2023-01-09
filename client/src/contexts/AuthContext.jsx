@@ -34,6 +34,7 @@ function AuthProvider ({children}) {
             value={{
                 loggedIn,
                 username,
+                userData,
                 handleLogin
                 }}>
             {children}
