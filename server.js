@@ -55,6 +55,7 @@ io.of('/guest').on('connection', (socket) => {
     });
     socket.on('sendMessage', (data) => {
         socket.broadcast.emit('receive', {message: `${socket.id} => ${data.message}`});
+        socket.emit('receive', {message: `${socket.id} => ${data.message}`});
     });
 });
 // listen to the port.
