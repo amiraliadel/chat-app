@@ -7,7 +7,6 @@ import mongoose from 'mongoose';
 import {Server} from 'socket.io';
 import {createServer} from 'http';
 import users from './routes/users.js';
-import guest from './sockets/guests/guest.js';
 
 // destructure environment variables.
 const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
@@ -26,7 +25,7 @@ mongoose
 // initialize server.
 const app = express();
 const server = createServer(app);
-const socket = new Server(server, {
+const io = new Server(server, {
     cors: {
         origin: true,
         credentials: true
@@ -48,7 +47,16 @@ app.use(cors({
 app.use('/users', users);
 
 // socket
-socket.of('/guest').on('connection', guest);
+io.of('/guest').on('connection', (socket) => {
+    // broadcast to all users
+    socket.broadcast.emit('users', {message: `${socket.id} is connected.`});
+    socket.on('disconnect', () => {
+        socket.broadcast.emit('users', {message: `${socket.id} is disconnected.`});
+    });
+    socket.on('sendMessage', (data) => {
+        socket.broadcast.emit('receive', {message: `${socket.id} => ${data.message}`});
+    });
+});
 // listen to the port.
 server.listen(PORT, () => {
     console.log(`Server is listening at port ${PORT}.`);
