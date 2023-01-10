@@ -40,7 +40,7 @@ export default function Guest () {
 
         const data = {
             message: input,
-            contact: room
+            room: room
         };
 
         try {
