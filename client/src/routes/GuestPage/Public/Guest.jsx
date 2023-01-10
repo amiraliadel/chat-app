@@ -30,8 +30,10 @@ export default function Guest () {
             userId: userId
         };
         try {
-            socket.emit('joinRoom', data);
-            
+            socket.emit('joinRoom', data, (res) => {
+                console.log(res);
+            });
+
         } catch (err) {
             console.log(err.message);
         }

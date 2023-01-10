@@ -7,6 +7,8 @@ import mongoose from 'mongoose';
 import {Server} from 'socket.io';
 import {createServer} from 'http';
 import users from './routes/users.js';
+import guest from './sockets/guests/guest.js';
+
 // destructure environment variables.
 const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
 
@@ -46,9 +48,7 @@ app.use(cors({
 app.use('/users', users);
 
 // socket
-socket.of('/guest').on('connection', (socket) => {
-    console.log(socket.id);
-});
+socket.of('/guest').on('connection', guest);
 // listen to the port.
 server.listen(PORT, () => {
     console.log(`Server is listening at port ${PORT}.`);
