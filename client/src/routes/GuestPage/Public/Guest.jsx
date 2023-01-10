@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {Manager} from 'socket.io-client';
-import Guidance from "../../../components/Shared/Guidance/Guidance";
 import styles from './Guest.module.css'
 
 const manager = new Manager('http://localhost:3003', {withCredentials: true});
@@ -10,7 +9,6 @@ export default function Guest () {
     const [userId, setUserId] = useState('');
     const [input, setInput] = useState('');
     const [msgs, setMsgs] = useState([]);
-    const [serverMsgs, setServerMsgs] = useState('');
 
     socket.on('error', err => {
         console.log(err);
@@ -29,21 +27,15 @@ export default function Guest () {
     
     useEffect(() => {
         socket.on('receive', (data) => {
-            console.log(data.message);
-            setMsgs([...msgs, data.message]);
+            setMsgs([...msgs, data]);
         });
     }, [msgs]);
 
     useEffect(() => {
         socket.on('users', (data) => {
-            setMsgs([...msgs, data.message]);
+            setMsgs([...msgs, data]);
         });
     }, [msgs]);
-
-    useEffect(() => {
-        
-    }, [serverMsgs]);
-
 
     // send msg.
     const sendMessage = async (event) => {
@@ -74,16 +66,11 @@ export default function Guest () {
             <p>chat with others or open a new window to test the app.</p>
         </div>
         <div className={styles.Content}>
-            {(() => {
-                if (serverMsgs) {
-                    return (serverMsgs.map(msg => <Guidance msg={msg.message} key={msg.message}/>));
-                }
-            })()}
             <div className={styles.Conversation}>
                 <div className={styles.Message}>
                 {(() => {
                     if (msgs) {
-                        return (msgs.map(msg => <span key={msg}>{msg}</span>));
+                        return (msgs.map(msg => <span className={styles[msg.style]} key={msg.msgId}>{msg.message}</span>));
                     }
             })()}
                 </div>        
