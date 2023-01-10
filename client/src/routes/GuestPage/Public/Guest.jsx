@@ -9,14 +9,19 @@ const socket = manager.socket('/guest');
 export default function Guest () {
     const [userId, setUserId] = useState('');
     const [room, setRoom] = useState('');
+    const [input, setInput] = useState('');
     const [serverMsgs, setServerMsgs] = useState('');
 
     socket.on('error', err => {
         console.log(err);
-      });
-
+    });
+    
+    socket.on('join', (data) => {
+        setServerMsgs([data]);
+    });
+    
     useEffect(() => {
-
+        
     }, [serverMsgs]);
     
     useEffect(() => {
@@ -26,6 +31,36 @@ export default function Guest () {
         });
         
     }, []);
+
+
+
+    // send msg.
+    const sendMessage = async (event) => {
+        event.preventDefault();
+
+        const data = {
+            message: input,
+            contact: room
+        };
+
+        try {
+
+            socket.emit('sendMessage', data);
+
+            setInput('');
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const handleInput = event => {
+        setInput(event.target.value);
+    }
+
+    const clearInput = () => {
+        setInput('');
+    }
 
     const joinRoom = async (event) => {
         event.preventDefault();
@@ -43,11 +78,11 @@ export default function Guest () {
         }
     }
 
-    const handleInput = event => {
+    const handleJoinInput = event => {
         setRoom(event.target.value);
     }
 
-    const clearInput = () => {
+    const clearJoinInput = () => {
         setRoom('');
     }
 
@@ -63,8 +98,8 @@ export default function Guest () {
                     id="room" 
                     placeholder="enter an ID to join"
                     value={room}
-                    onChange={handleInput}
-                    onClick={clearInput}
+                    onChange={handleJoinInput}
+                    onClick={clearJoinInput}
                     />
                 </label>
                 <button type="submit">join</button>
@@ -77,6 +112,28 @@ export default function Guest () {
                     return (serverMsgs.map(msg => <Guidance msg={msg.message} key={msg.message}/>));
                 }
             })()}
+            <div className={styles.Conversation}>
+                <div className={styles.Message}>
+                    message
+                </div>        
+                <div className={styles.SendMessage}>
+                    <form onSubmit={sendMessage}>
+                        <label htmlFor="message">
+                            <input 
+                                type="text" 
+                                name="message" 
+                                placeholder="your message" 
+                                value={input} 
+                                onChange={handleInput}
+                                onClick={clearInput}
+                                />
+                        </label>
+                        <label htmlFor="submit">
+                            <button type="submit">send</button>
+                        </label>
+                    </form>
+                </div>
+            </div>
         </div>
     </>);
 }
