@@ -16,9 +16,9 @@ export default async (socket) => {
             socket.join(data.room);
             console.log('rooms:', socket.rooms);
             socket.to([data.room]).emit('join', {message: `user with id: ${socket.id} is joined you`});
-            res(`you are connected to the user with id: ${data.room}.`);
+            res({message: `you are connected to the user with id: ${data.room}.`});
         } else {
-            res(`there is no any room with id: ${data.room}. please try again.`);
+            res({message: `there is no any room with id: ${data.room}. please try again.`});
         }
     });
 }
