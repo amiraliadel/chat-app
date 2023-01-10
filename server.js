@@ -49,13 +49,13 @@ app.use('/users', users);
 // socket
 io.of('/guest').on('connection', (socket) => {
     // broadcast to all users
-    socket.broadcast.emit('users', {message: `${socket.id} is connected.`});
+    socket.broadcast.emit('users', {message: `${socket.id} is connected.`, style: 'Center', msgId: `${socket.id}`+Date.now()});
     socket.on('disconnect', () => {
-        socket.broadcast.emit('users', {message: `${socket.id} is disconnected.`});
+        socket.broadcast.emit('users', {message: `${socket.id} is disconnected.`, style: 'Center', msgId: `${socket.id}`+Date.now()});
     });
     socket.on('sendMessage', (data) => {
-        socket.broadcast.emit('receive', {message: `${socket.id} => ${data.message}`});
-        socket.emit('receive', {message: `${socket.id} => ${data.message}`});
+        socket.broadcast.emit('receive', {message: `${socket.id} => ${data.message}`, style: 'Left', msgId: `${socket.id}`+Date.now()});
+        socket.emit('receive', {message: `${data.message} <= ${socket.id}`, style: 'Right', msgId: `${socket.id}`+Date.now()});
     });
 });
 // listen to the port.
