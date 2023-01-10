@@ -8,8 +8,8 @@ const socket = manager.socket('/guest');
 
 export default function Guest () {
     const [userId, setUserId] = useState('');
-    const [room, setRoom] = useState('');
     const [input, setInput] = useState('');
+    const [msgs, setMsgs] = useState([]);
     const [serverMsgs, setServerMsgs] = useState('');
 
     socket.on('error', err => {
@@ -26,26 +26,19 @@ export default function Guest () {
             }); 
         })();
     }, [socket.id]);
-
-    useEffect(() => {
-        socket.on('join', (data) => {
-            setServerMsgs([data]);
-            setRoom(data.userId);
-            console.log('joined user:', data.userId);
-        });
-    }, []);
     
     useEffect(() => {
         socket.on('receive', (data) => {
             console.log(data.message);
+            setMsgs([...msgs, data.message]);
         });
-    }, []);
+    }, [msgs]);
 
     useEffect(() => {
         socket.on('users', (data) => {
-            console.log(data.message);
+            setMsgs([...msgs, data.message]);
         });
-    }, []);
+    }, [msgs]);
 
     useEffect(() => {
         
@@ -75,49 +68,10 @@ export default function Guest () {
         setInput('');
     }
 
-    const joinRoom = async (event) => {
-        event.preventDefault();
-        const data = {
-            room: room,
-            userId: userId
-        };
-        try {
-            socket.emit('joinRoom', data, (res) => {
-                setServerMsgs([res]);
-            });
-
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
-
-    const handleJoinInput = event => {
-        setRoom(event.target.value);
-    }
-
-    const clearJoinInput = () => {
-        setRoom('');
-    }
-
     return (<>
         <div className={styles.Sidebar}>
-            <form onSubmit={joinRoom}>
-                <label htmlFor="userId">
-                    your id: <span id="userId">{userId}</span>
-                </label>
-                <label htmlFor="room">
-                    <input 
-                    type="text" 
-                    id="room" 
-                    placeholder="enter an ID to join"
-                    value={room}
-                    onChange={handleJoinInput}
-                    onClick={clearJoinInput}
-                    />
-                </label>
-                <button type="submit">join</button>
-            </form>
-            <p>share your id with someone else to join to your room or enter the id from someone else to join to his/her room</p>
+            <h2>your id: <span id="userId">{userId}</span></h2>
+            <p>chat with others or open a new window to test the app.</p>
         </div>
         <div className={styles.Content}>
             {(() => {
@@ -127,7 +81,11 @@ export default function Guest () {
             })()}
             <div className={styles.Conversation}>
                 <div className={styles.Message}>
-                    message
+                {(() => {
+                    if (msgs) {
+                        return (msgs.map(msg => <span key={msg}>{msg}</span>));
+                    }
+            })()}
                 </div>        
                 <div className={styles.SendMessage}>
                     <form onSubmit={sendMessage}>
