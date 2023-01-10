@@ -24,7 +24,7 @@
 }
 .Sidebar form label span {
     color: aliceblue;
-    text-transform: lowercase;
+    text-transform: none;
 }
 .Sidebar form label input {
     width: 100%;
