@@ -15,23 +15,41 @@ export default function Guest () {
     socket.on('error', err => {
         console.log(err);
     });
+
+    useEffect(() => {
+        (() => {
+            socket.on('connect', () => {
+                console.log('connected.');
+                if (socket.id !== undefined) {
+                    setUserId(socket.id);
+                }
+            }); 
+        })();
+    }, [socket.id]);
+
+    useEffect(() => {
+        socket.on('join', (data) => {
+            setServerMsgs([data]);
+            setRoom(data.userId);
+            console.log('joined user:', data.userId);
+        });
+    }, []);
     
-    socket.on('join', (data) => {
-        setServerMsgs([data]);
-    });
-    
+    useEffect(() => {
+        socket.on('receive', (data) => {
+            console.log(data.message);
+        });
+    }, []);
+
+    useEffect(() => {
+        socket.on('users', (data) => {
+            console.log(data.message);
+        });
+    }, []);
+
     useEffect(() => {
         
     }, [serverMsgs]);
-    
-    useEffect(() => {
-        socket.on('connect', () => {
-            console.log('connected');
-            setUserId(socket.id);
-        });
-        
-    }, []);
-
 
 
     // send msg.
@@ -39,16 +57,11 @@ export default function Guest () {
         event.preventDefault();
 
         const data = {
-            message: input,
-            room: room
+            message: input
         };
-
         try {
-
             socket.emit('sendMessage', data);
-
             setInput('');
-
         } catch (err) {
             console.log(err);
         }
