@@ -8,6 +8,8 @@ import {Server} from 'socket.io';
 import {createServer} from 'http';
 import users from './routes/users.js';
 import requests from './routes/requests.js';
+import decodeJwtToken from './helpers/decodeJwtToken.js';
+import sockets from './sockets/sockets.js';
 
 // destructure environment variables.
 const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
@@ -58,9 +60,9 @@ io.of('/guest').on('connection', (socket) => {
 });
 
 // authorize jwt token from socket.handshake.headers.cookie.
-socket.use(decodeJwtToken);
+io.use(decodeJwtToken);
 // on connection.
-socket.on('connection', sockets);
+io.on('connection', sockets);
 
 // routes.
 app.use('/users', users);
