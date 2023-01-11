@@ -5,6 +5,8 @@ import register from '../controllers/users/register.js';
 import login from '../controllers/users/login.js';
 import logout from '../controllers/users/logout.js';
 import userData from '../controllers/users/userData.js';
+import search from '../controllers/users/search.js';
+
 const router = express.Router();
 
 // register route.
@@ -20,7 +22,5 @@ router.get('/logout', logout);
 router.get('/userData', decodeJwtToken, userData);
 
 // search route.
-router.post('/search', (req, res) => {
-    res.send('search route');
-});
+router.post('/search', searchValidation, search);
 export default router;
