@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import {Server} from 'socket.io';
 import {createServer} from 'http';
 import users from './routes/users.js';
+import requests from './routes/requests.js';
 
 // destructure environment variables.
 const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
@@ -43,10 +44,7 @@ app.use(cors({
     credentials: true
 }));
 
-// routes.
-app.use('/users', users);
-
-// socket
+// guest socket
 io.of('/guest').on('connection', (socket) => {
     // broadcast to all users
     socket.broadcast.emit('users', {message: `${socket.id} is connected.`, style: 'Center', msgId: `${socket.id}`+Date.now()});
@@ -58,6 +56,16 @@ io.of('/guest').on('connection', (socket) => {
         socket.emit('receive', {message: `${data.message} <= ${socket.id}`, style: 'Right', msgId: `${socket.id}`+Date.now()});
     });
 });
+
+// authorize jwt token from socket.handshake.headers.cookie.
+socket.use(decodeJwtToken);
+// on connection.
+socket.on('connection', sockets);
+
+// routes.
+app.use('/users', users);
+app.use('/requests', requests);
+
 // listen to the port.
 server.listen(PORT, () => {
     console.log(`Server is listening at port ${PORT}.`);
