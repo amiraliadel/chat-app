@@ -1,0 +1,25 @@
+.Sidebar {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-auto-flow: row;
+    align-content: flex-start;
+    color:aliceblue;
+    background-color: #212121;
+    overflow-y: auto;
+}
+.Content {
+    width: 100%;
+    height: auto;
+    display: grid;
+    background-color: aliceblue;
+    overflow: hidden;
+}
+
+@media only screen and (min-width: 1024px) {
+    .Sidebar {
+        width: 400px;
+        height: 100%;
+        grid-row: 1/3;
+    }
+}

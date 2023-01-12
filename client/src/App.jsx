@@ -1,6 +1,7 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 import {AuthProvider} from './contexts/AuthContext';
+import {SocketProvider} from './contexts/SocketContext';
 import Layout from './components/Layout/Layout';
 import Home from './routes/HomePage/Home';
 import Auth from './routes/AuthPage/Auth';
@@ -14,17 +15,19 @@ import './App.css';
 function App() {
   return (
     <AuthProvider>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/auth' element={<Auth/>}>
-            <Route path='login' element={<Login/>}/>
-            <Route path='register' element={<Register/>}/>
+      <SocketProvider>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/auth' element={<Auth/>}>
+              <Route path='login' element={<Login/>}/>
+              <Route path='register' element={<Register/>}/>
+            </Route>
+            <Route path='/guest' element={<Guest/>}/>
+            <Route path='/*' element={<NoMatch/>}/>
           </Route>
-          <Route path='/guest' element={<Guest/>}/>
-          <Route path='/*' element={<NoMatch/>}/>
-        </Route>
-      </Routes>
+        </Routes>
+      </SocketProvider>
     </ AuthProvider>
   );
 }

@@ -1,0 +1,37 @@
+.Search {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border-bottom: 1px solid aliceblue;
+}
+.Search form {
+    width: 100%;
+    height: 40px;
+    display: grid;
+    grid-auto-flow: row;
+}
+.Search form div {
+    width: 100%;
+    height: 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.Search form label input { 
+    width: 100%;
+    height: 100%;
+    padding-left: 5px;
+    border: none;
+}
+.Search form label button { 
+    width: 100px;
+    height: 100%;
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+    cursor: pointer;
+    background-color: steelblue;
+}
+.Search form label button:hover { 
+    font-size: 14px;
+}

@@ -1,0 +1,127 @@
+.Messages {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 10px;
+    align-content: flex-start;
+    border-bottom: 1px solid #212121;
+    background-color: aliceblue;
+    overflow-y: scroll;
+}
+.Message {
+    width: 100%;
+    height: auto;
+    display: grid;
+    background-color: transparent;
+}
+.System {
+    justify-self: center;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    align-self: center;
+    display: grid;
+    grid-template-rows: 1fr 14px;
+    grid-row-gap: 5px;
+    color: aliceblue;
+    border-radius: 2px;
+    background-color: #414141;
+}
+.System .Body {
+    justify-self: center;
+}
+.System .Body p {
+    font-family: 'Raleway';
+    font-size: 16px;
+    line-height: 18px;
+}
+.System .Detail {
+    justify-self: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 5px;
+    color: steelblue;
+}
+.System .Detail span {
+    font-size: 14px;
+    line-height: 14px;
+    justify-self: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 5px;
+}
+.System .Detail .Icons {
+    width: 14px;
+    height: 14px;
+}
+.Contact {
+    justify-self: flex-start;
+    width: auto;
+    max-width: 70%;
+    height: auto;
+    padding: 10px;
+    align-self: center;
+    display: grid;
+    grid-template-rows: 1fr 14px;
+    grid-row-gap: 5px;
+    color: aliceblue;
+    border-radius: 2px;
+    background-color: #414141;
+}
+.Contact .Body {
+    justify-self: flex-start;
+}
+.Contact .Body p {
+    font-size: 16px;
+    line-height: 18px;
+}
+.Contact .Detail {
+    justify-self: flex-start;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 5px;
+    color: steelblue;
+}
+.Contact .Detail span {
+    font-size: 14px;
+    line-height: 14px;
+    justify-self: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 5px;
+}
+.Contact .Detail .Icons {
+    width: 14px;
+    height: 14px;
+}
+.User {
+    justify-self: flex-end;
+    width: auto;
+    max-width: 70%;
+    height: auto;
+    padding: 10px;
+    align-self: center;
+    display: grid;
+    grid-template-rows: 1fr 14px;
+    grid-row-gap: 5px;
+    color: aliceblue;
+    border-radius: 2px;
+    background-color: #414141;
+}
+.User .Body {
+    justify-self: flex-start;
+}
+.User .Body p {
+    font-size: 16px;
+    line-height: 18px;
+}
+.User .Detail {
+    justify-self: flex-end;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 5px;
+    color: steelblue;
+}
+
