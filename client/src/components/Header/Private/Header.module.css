@@ -3,20 +3,20 @@
     height: 100%;
     padding: 0 1rem;
     display: grid;
-    grid-auto-flow: column;
-    justify-content: space-between;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: 1fr 1fr;
     color: #212121;
     background-color: steelblue;
 }
 .User {
-    width: auto;
-    height: auto;
-    padding: 0;
+    grid-column: 1/2;
+    grid-row: 2/3;
     align-self: center;
     display: grid;
     grid-auto-flow: column;
-    grid-column-gap: 0.5rem;
+    grid-column-gap: 1rem;
     align-content: center;
+    justify-content: flex-start;
 }
 .Username {
     height: 4rem;
@@ -59,16 +59,21 @@
     padding-top: 0.2rem;
 }
 .Logo {
+    height: 2.5rem;
+    grid-column: 1/4;
+    grid-row: 1/2;
     align-self: center;
     justify-self: flex-start;
 }
 .Logo a {
     font-family: 'Zen Dots', cursive;
-    font-size: 1.4rem;
-    letter-spacing: -2px;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
     color: #212121;
 }
 .Icons {
+    grid-row: 2/3;
+    grid-column: 3/4;
     align-self: center;
     justify-self: flex-end;
     display: grid;
@@ -97,9 +102,14 @@
     .Header {
         padding: 0 2rem;
         grid-template-columns: repeat(3, auto);
+        grid-template-rows: 1fr;
     }
     .User {
+        grid-row: 1/2;
         grid-column-gap: 2rem;
+    }
+    .Username h2 {
+        font-size: 1.4rem;
     }
     .Logo {
         grid-column: 2/3;
@@ -110,6 +120,7 @@
     }
     .Icons {
         grid-column: 3/4;
+        grid-row: 1/2;
         column-gap: 2rem;
     }
 }
