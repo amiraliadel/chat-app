@@ -22,4 +22,7 @@
         height: 100%;
         grid-row: 1/3;
     }
+    .Content {
+        grid-row: 1/3;
+    }
 }

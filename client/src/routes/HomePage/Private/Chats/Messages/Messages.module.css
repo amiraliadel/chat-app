@@ -7,7 +7,6 @@
     grid-row-gap: 10px;
     align-content: flex-start;
     border-bottom: 1px solid #212121;
-    background-color: aliceblue;
     overflow-y: scroll;
 }
 .Message {
@@ -42,7 +41,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: 5px;
-    color: steelblue;
+    
 }
 .System .Detail span {
     font-size: 14px;
@@ -51,6 +50,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: 5px;
+    color: steelblue;
 }
 .System .Detail .Icons {
     width: 14px;
@@ -82,7 +82,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: 5px;
-    color: steelblue;
+    
 }
 .Contact .Detail span {
     font-size: 14px;
@@ -91,6 +91,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: 5px;
+    color: steelblue;
 }
 .Contact .Detail .Icons {
     width: 14px;
@@ -122,6 +123,9 @@
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: 5px;
+    color: steelblue;
+}
+.User .Detail span {
     color: steelblue;
 }
 

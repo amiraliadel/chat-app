@@ -2,22 +2,27 @@
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 60px auto;
+    grid-template-rows: 6rem 1fr;
     grid-auto-flow: column;
     overflow: hidden;
 }
 .Title {
     width: 100%;
-    height: 60px;
-    padding: 10px;
+    height: 6rem;
+    padding: 1rem;
     display: grid;
-    grid-auto-flow: row;
+    grid-auto-flow: column;
     align-content: center;
+    justify-content: flex-start;
+    column-gap: 0.5rem;
     border-bottom: 1px solid #212121;
+}
+.Title h3 {
+    font-size: 1.6rem;
 }
 .Title span {
     font-size: 11px;
-    padding-left: 2px;
+    padding-top: 3px;
 }
 .Conversation {
     width: 100%;
@@ -39,7 +44,6 @@
     display: grid;
     grid-template-columns: 1fr 100px;
     grid-auto-flow: row;
-    background-color: tomato;
 }
 .SendMessage form label input {
     width: 100%;
@@ -57,4 +61,11 @@
 }
 .SendMessage form label button:hover { 
     font-size: 14px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .Conversation {
+        grid-template-rows: 1fr 60px;
+        grid-auto-flow: row;
+    }
 }
