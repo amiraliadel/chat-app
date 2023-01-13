@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext, useRef} from "react";
 import {SocketContext} from "../../../../../contexts/SocketContext";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {solid} from '@fortawesome/fontawesome-svg-core/import.macro';
+import {ReactComponent as CheckIcon} from '../../../../../imgs/icons/check_FILL1_wght300_GRAD200_opsz20.svg';
+import {ReactComponent as DoubleCheckIcon} from '../../../../../imgs/icons/done_all_FILL1_wght300_GRAD200_opsz20.svg';
 import styles from './Messages.module.css';
 
 export default function Messages ({messages, contact}) {
@@ -65,9 +65,9 @@ export default function Messages ({messages, contact}) {
                                             (msg.from === 'system') ? 
                                             '' :
                                                 (msg.read === true) ? 
-                                                    <FontAwesomeIcon icon={solid('check-double')} className={styles.Icons} /> 
+                                                    <DoubleCheckIcon /> 
                                                     : 
-                                                    <FontAwesomeIcon icon={solid('check')} className={styles.Icons} />
+                                                    <CheckIcon />
                                         }
                                     </div>
                                 </div>

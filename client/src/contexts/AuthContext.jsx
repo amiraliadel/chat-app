@@ -6,6 +6,7 @@ function AuthProvider ({children}) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setUsername] = useState('');
     const [userData, setUserData] = useState('');
+    const [showReqs, setShowReqs] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -28,14 +29,30 @@ function AuthProvider ({children}) {
         setLoggedIn(isLoggedIn);
         isLoggedIn ? setUsername(username) : setUsername('');
     }
-
+    // display requests.
+    const showRequests = () => {
+        showReqs ? setShowReqs(false) : setShowReqs(true); 
+        
+    }
+    // update requests
+    const updateRequests = (requests) => {
+        setUserData({...userData, requests: requests});
+    }
+    // update contacts
+    const updateContacts = (contacts, requests) => {
+        setUserData({...userData, contacts: contacts, requests: requests});
+    }
     return (
         <AuthContext.Provider 
             value={{
                 loggedIn,
                 username,
                 userData,
-                handleLogin
+                showReqs,
+                handleLogin, 
+                showRequests, 
+                updateRequests, 
+                updateContacts,
                 }}>
             {children}
         </AuthContext.Provider>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from "react";
 import {SocketContext} from "../../../../contexts/SocketContext";
 import {Link} from "react-router-dom";
-import {ReactComponent as MessageIcon} from '../../../../imgs/icons/mode_comment_FILL0_wght700_GRAD200_opsz24.svg';
+import {ReactComponent as MessageIcon} from '../../../../imgs/icons/chat_bubble_FILL1_wght300_GRAD200_opsz20.svg';
 import styles from './Contact.module.css';
 
 export default function Contact ({contact, username}) {
