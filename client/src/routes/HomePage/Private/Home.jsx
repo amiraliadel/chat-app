@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext, useRef} from "react";
 import {Outlet} from 'react-router-dom';
 import {AuthContext} from "../../../contexts/AuthContext";
 import {SocketContext} from "../../../contexts/SocketContext";
@@ -19,6 +19,7 @@ export default function Home () {
     const [isErr, setIsErr] = useState(false);
     const [searchedUser, setSearchedUser] = useState();
     const [isFound, setIsFound] = useState(false);
+    const bottom = useRef(null);
 
     useEffect(() => {
         //setUser(userData);
@@ -47,6 +48,12 @@ export default function Home () {
         setIsFound(found);
         if (found) setSearchedUser(searchedUser);
     }
+
+    const handleScroll = () => {
+        setTimeout(() => {
+            if (bottom.current !== null) bottom.current.scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+    }   
 
     return (<>
         <div className={styles.Sidebar}>
@@ -77,11 +84,16 @@ export default function Home () {
             }
             <div className={styles.Contacts}>
                 {
-                    userContacts ? userContacts.map(contact => <Contact contact={contact} username={username} key={contact._id}/>) : '' 
+                    userContacts ? userContacts.map(contact => 
+                    <Contact 
+                        contact={contact} 
+                        username={username} 
+                        handleScroll={handleScroll}
+                        key={contact._id}/>) : '' 
                 }
             </div>
         </div>
-        <div className={styles.Content}>
+        <div className={styles.Content} ref={bottom} >
             <Outlet />
         </div>
     </>);

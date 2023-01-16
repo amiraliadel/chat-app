@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {ReactComponent as MessageIcon} from '../../../../imgs/icons/chat_bubble_FILL1_wght300_GRAD200_opsz20.svg';
 import styles from './Contact.module.css';
 
-export default function Contact ({contact, username}) {
+export default function Contact ({contact, username, handleScroll}) {
 
     const {messages} = useContext(SocketContext);
     const [unreadCount, setUnreadCount] = useState();
@@ -28,7 +28,7 @@ export default function Contact ({contact, username}) {
     }
 
     return (<>
-        <div className={styles.Contact}>
+        <div className={styles.Contact} onClick={handleScroll}>
             <Link to={`/chats/${contact.username}`}>
                 <h3>{contact.username}</h3>
                 <div className={styles.Message}>

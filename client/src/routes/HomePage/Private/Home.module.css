@@ -1,6 +1,6 @@
 .Sidebar {
     width: 100%;
-    height: auto;
+    height: 100vh;
     display: grid;
     grid-auto-flow: row;
     align-content: flex-start;
@@ -20,9 +20,9 @@
     .Sidebar {
         width: 400px;
         height: 100%;
-        grid-row: 1/3;
+        
     }
     .Content {
-        grid-row: 1/3;
+        
     }
 }
