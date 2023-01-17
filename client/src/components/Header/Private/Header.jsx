@@ -26,13 +26,13 @@ export default function Header () {
         (async () => {
             await getRequests();
         })();
-    }, []);
+    }, [getRequests]);
 
     useEffect(() => {
         (() => {
             handleUnreadMessages();
         })();
-    }, [messages]);
+    }, [messages, unreadMessages]);
 
     const logoutUser = async (event) => {
         event.preventDefault();
