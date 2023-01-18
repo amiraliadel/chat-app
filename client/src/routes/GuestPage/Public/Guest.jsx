@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Manager} from 'socket.io-client';
 import styles from './Guest.module.css'
 
-const manager = new Manager('http://localhost:3003', {withCredentials: true});
+const manager = new Manager('https://chat-app-server-zlwu.onrender.com/', {withCredentials: true});
 const socket = manager.socket('/guest');
 
 export default function Guest () {
