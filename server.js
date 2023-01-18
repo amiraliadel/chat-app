@@ -1,4 +1,6 @@
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -10,6 +12,9 @@ import users from './routes/users.js';
 import requests from './routes/requests.js';
 import decodeJwtToken from './helpers/decodeJwtToken.js';
 import sockets from './sockets/sockets.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // destructure environment variables.
 const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
@@ -67,6 +72,14 @@ io.on('connection', sockets);
 // routes.
 app.use('/users', users);
 app.use('/requests', requests);
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 // listen to the port.
 server.listen(process.env.PORT || 8080, () => {
