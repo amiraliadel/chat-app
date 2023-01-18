@@ -73,15 +73,13 @@ io.on('connection', sockets);
 app.use('/users', users);
 app.use('/requests', requests);
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+app.use(express.static('client/build'));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
 
 // listen to the port.
 server.listen(process.env.PORT || 8080, () => {
-    console.log(`Server is listening at port ${PORT}.`);
+    console.log(`Server is listening at port ${process.env.PORT}.`);
 });
