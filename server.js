@@ -17,7 +17,7 @@ const {PORT, DB_USER, DB_PASS, DB_HOST, DB_NAME} = dotenv.config().parsed;
 //connect to mongoDB using mongoose.
 mongoose
     .set('strictQuery', false)
-    .connect(`mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://${process.env.DB_USER || DB_USER}:${process.env.DB_PASS || DB_PASS}@${process.env.DB_HOST || DB_HOST}/${process.env.DB_NAME || DB_NAME}?retryWrites=true&w=majority`)
     .then(() => {
         console.log('connected to the DB.');
     })
@@ -69,6 +69,6 @@ app.use('/users', users);
 app.use('/requests', requests);
 
 // listen to the port.
-server.listen(PORT, () => {
+server.listen(process.env.PORT || 8080, () => {
     console.log(`Server is listening at port ${PORT}.`);
 });

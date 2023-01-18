@@ -13,7 +13,7 @@ export default async (req, res, next) => {
         // check if there is a token.
         if (jwtToken !== undefined) {
             // verify token and grab username and id.
-            verify(jwtToken, JWT_SECRET, (err, decoded) => {
+            verify(jwtToken, process.env.JWT_SECRET || JWT_SECRET, (err, decoded) => {
                 if (err) throw new Error(err.message);
                 req.username = decoded.name;
                 req.id = decoded.sub;

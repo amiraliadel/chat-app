@@ -12,7 +12,7 @@ export default async (socket, next) => {
         // check if there is a token.
         if (jwtToken !== undefined) {
             // verify token and grab username and id.
-            verify(jwtToken, JWT_SECRET, (err, decoded) => {
+            verify(jwtToken, process.env.JWT_SECRET || JWT_SECRET, (err, decoded) => {
                 if (err) throw new Error(err.message);
                 socket.request.username = decoded.name;
                 socket.request.id = decoded.sub;
