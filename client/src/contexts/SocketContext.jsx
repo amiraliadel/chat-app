@@ -3,7 +3,7 @@ import {Manager} from 'socket.io-client';
 
 const SocketContext = createContext();
 
-const manager = new Manager('http://localhost:3003/', {withCredentials: true});
+const manager = new Manager('https://chat-app-server-zlwu.onrender.com/', {withCredentials: true});
 const socket = manager.socket('/');
 
 
