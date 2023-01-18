@@ -11,7 +11,7 @@ function AuthProvider ({children}) {
     useEffect(() => {
         (async () => {
             try {
-                const res = await axios.get('/users/userData', {
+                const res = await axios.get('https://chat-app-server-1ewb.onrender.com/users/userData', {
                     withCredentials: true
                 });
                 if (res.data.success) {

@@ -37,7 +37,7 @@ export default function Header () {
     const logoutUser = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.get('/users/logout', {
+            const res = await axios.get('https://chat-app-server-1ewb.onrender.com/users/logout', {
                 withCredentials: true
             });
             if (res.data.success) {

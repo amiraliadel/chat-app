@@ -12,7 +12,7 @@ export default function Search (props) {
         const data = {username: formData.get('username')};
 
         try {
-            const res = await axios.post('/users/search', data, {
+            const res = await axios.post('https://chat-app-server-1ewb.onrender.com/users/search', data, {
                 withCredentials: true
             });
             if (res.data.success) {

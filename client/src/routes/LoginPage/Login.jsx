@@ -19,7 +19,7 @@ export default function Login () {
             password: formData.get('password')
         };
         try {
-            const res = await axios.post('/users/login', data, {
+            const res = await axios.post('https://chat-app-server-1ewb.onrender.com/users/login', data, {
                 withCredentials: true
             });
             if (res.data.success) {
