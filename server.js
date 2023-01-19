@@ -47,7 +47,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'https://chat-app-ydj5.onrender.com/',
+    origin: 'https://chat-app-ydj5.onrender.com',
     credentials: true
 }));
 
