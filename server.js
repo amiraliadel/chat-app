@@ -74,12 +74,6 @@ io.on('connection', sockets);
 app.use('/users', users);
 app.use('/requests', requests);
 
-app.use(express.static('client/build'));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-});
-
 // listen to the port.
 server.listen(process.env.PORT || PORT, () => {
     console.log(`Server is listening at port ${process.env.PORT}.`);
