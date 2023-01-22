@@ -22,7 +22,7 @@ function AuthProvider ({children}) {
                 console.log(err.message);
             }
         })();
-    });
+    }, []);
 
     // handle login.
     const handleLogin = (isLoggedIn, username) => {
