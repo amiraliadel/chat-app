@@ -34,7 +34,7 @@ export default async (req, res) => {
         // return jwt token and a success message to the client.
         return res
         .status(200)
-        .cookie('jwtToken', jwtToken, {httpOnly: true, secure: false, sameSite: 'lax'})
+        .cookie('jwtToken', jwtToken, {httpOnly: true, secure: true, sameSite: 'None'})
         .json({server_message: 'you are successfully logged in.', success: true, username: user.username});
         
     } catch (err) {
